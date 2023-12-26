@@ -11,8 +11,5 @@ namespace NTierECommerce.BLL.Abstracts
         Task<Category> GetCategoryById(int id);
 
         Task<string> UpdateCategory(Category category);
-
-
-
     }
 }

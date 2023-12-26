@@ -11,12 +11,10 @@ namespace NTierECommerce.BLL.Concretes
     public class ProductRepository : IProductRepository
     {
         private readonly IRepository<Product> _productRep;
-        private readonly Product _product;
 
-        public ProductRepository(IRepository<Product> productRep, Product product)
+        public ProductRepository(IRepository<Product> productRep)
         {
             _productRep = productRep;
-            _product = product;
         }
         public async Task<string> CreateProduct(Product product)
         {
