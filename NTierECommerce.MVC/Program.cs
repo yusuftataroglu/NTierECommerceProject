@@ -17,6 +17,8 @@ builder.Services.AddDbContext<ECommerceContext>(options => options.UseSqlServer(
 builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
 
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
 
 var app = builder.Build();
 
