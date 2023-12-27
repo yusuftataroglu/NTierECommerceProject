@@ -4,6 +4,5 @@
 ## Katmanlar
 
 ### NTierECommerce.Entities
-Projede kullanılması gereken entity (veritabanında tablo haline gelecek classlar) lerin dahil edildiği katmandır. Bu katmanda ihtiyacımız olan
-
+Projede kullanÄ±lmasÄ± gereken entity (veritabanÄ±nda tablo haline gelecek classlar) lerin dahil edildiÄŸi katmandÄ±r.
 
