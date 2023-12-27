@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row ml-2 mt-2">
+    <div class="col-md-auto">
+        <div class="card">
+            <div class="card-header">
+                Silmek istediğinizden emin misiniz?
+            </div>
+            <div class="card-body">
+                <button class="btn btn-warning" asp-area="Admin" asp-controller="Category" asp-action="Delete" type="submit" asp>Evet</button>
+                <button class="btn btn-primary">Hayır</button>
+            </div>
+        </div>
+    </div>
+</div>

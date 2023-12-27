@@ -1,39 +1,57 @@
 ﻿using NTierECommerce.BLL.Abstracts;
 using NTierECommerce.Entities.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace NTierECommerce.BLL.Concretes
 {
-    public class CategoryRepository : ICategoryRepository
+    public class CategoryRepository : ICategoryReposiyory
     {
         private IRepository<Category> _categoryRep;
+
 
         public CategoryRepository(IRepository<Category> categoryRep)
         {
             _categoryRep = categoryRep;
         }
 
-        //List
+        public async Task<string> CreateCategory(Category entity)
+        {
+            return await _categoryRep.Create(entity);
+
+        }
+
+        public async Task<string> DeleteCategory(Category deleted)
+        {
+            return await _categoryRep.Delete(deleted);
+        }
+
+        public IEnumerable<Category> GetActiveCategories()
+        {
+            return _categoryRep.GetAllActive();
+        }
+
         public IEnumerable<Category> GetAllCategories()
         {
             return _categoryRep.GetAll();
         }
 
-        //Create
-        public async Task<string> CreateCategory(Category category)
-        {
-            return await _categoryRep.Create(category);
-        }
-
-        //Read
-        public async Task<Category> GetCategoryById(int id)
+        public async Task<Category> GetCategoryWithById(int id)
         {
             return await _categoryRep.GetById(id);
         }
 
-        //Update
-        public async Task<string> UpdateCategory(Category category)
+        public IEnumerable<Category> GetPassiveCategories()
         {
-            return await _categoryRep.Update(category);
+            return _categoryRep.GetAllPassive();
+        }
+
+        public async Task<string> UpdateCategory(Category entity)
+        {
+            return await _categoryRep.Update(entity);
         }
 
 

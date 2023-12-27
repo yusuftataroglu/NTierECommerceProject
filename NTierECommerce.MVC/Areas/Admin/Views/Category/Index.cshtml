@@ -1,0 +1,87 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Kategori Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="alert">
+    @if (TempData["Result"]!=null)
+    {
+        <span>@TempData["Result"]</span>
+    }
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between">
+            <h2>@ViewData["Title"]</h2>
+            <a asp-controller="Category" asp-action="Create" class="btn btn-success">Kategori Ekle</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Kategori</th>
+                    <th>Açıklama</th>
+                    <th>Durum</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.CategoryName</td>
+                        <td>@item.Description</td>
+                        <td>
+                            @if (item.IsActive)
+                            {
+                                <span class="right badge badge-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="right badge badge-danger">Passive</span>
+                            }
+
+                        </td>
+                        <td class="d-flex justify-content-center">
+                            <a asp-action="GetDetails" asp-route-id="@item.Id" class="btn btn-primary ml-1">Detay</a>
+                            <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning ml-1">Güncelle</a>
+                            <form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Emin misiniz?')">
+                                <button type="submit" class="btn btn-danger ml-1">Sil</button>
+                            </form>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@*
+<script>
+    function confirmDelete(itemId) {
+        var confirmResult = confirm('Emin misiniz?');
+        if (confirmResult) {
+            // Kullanıcı 'Evet' derse, AJAX ile silme işlemini gerçekleştir
+            $.ajax({
+                type: 'POST',
+                url: 'Admin/Category/Delete', // Silme işlemini gerçekleştirecek action'ın adresi
+                data: { id: itemId }, // Gönderilecek veri (id)
+                success: function () {
+                    // Başarılıysa burada gerekli işlemleri yapabilirsiniz
+                    // Örneğin, bir bildirim gösterme veya tabloyu güncelleme
+                },
+                error: function () {
+                    // Hata durumunda burada gerekli işlemleri yapabilirsiniz
+                }
+            });
+        } else {
+            // Kullanıcı 'Hayır' derse, hiçbir şey yapma
+        }
+    }
+</script>
+*@
